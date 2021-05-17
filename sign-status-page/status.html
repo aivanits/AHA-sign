@@ -7,7 +7,7 @@
   align-self: center;
   text-align: center;
   font-size: xx-large;
-  width: 70%;
+  width: 50%;
 }
 </style>
 
@@ -224,20 +224,22 @@
 
 <!-- for sign status -->
 <script>
+
   var elt_signStatus = document.getElementById('signStatus');
   elt_signStatus.innerHTML = "Getting sign status...";
 
   fetch("http://isawthesign.allhandsactive.org/state", )
     .then(response => response.json())
     .then(data => {
+      
       console.log("got response from isawthesign.allhandsactive.org/state")
       if (data)
       {
-        elt_signStatus.innerHTML = "Sign is ON" + '<br><img src="./page-data/opensign.png">';
+        elt_signStatus.innerHTML = "Sign is ON, AHA is OPEN" + '<br><img src="./page-data/opensign.png">';
       }
       else
       {
-        elt_signStatus.innerHTML = "Sign is OFF" + '<br><img src="./page-data/closedsign.png">';
+        elt_signStatus.innerHTML = "Sign is OFF, AHA is CLOSED" + '<br><img src="./page-data/closedsign.png">';
       }
     })
     .catch(error => console.error(error))
