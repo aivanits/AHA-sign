@@ -2,6 +2,14 @@
 <!-- saved from url=(0032)https://allhandsactive.org/visit -->
 <html lang="en" class="js fontawesome-i2svg-active fontawesome-i2svg-complete"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<style>
+#signStatus {
+  align-self: center;
+  text-align: center;
+  font-size: xx-large;
+  width: 70%;
+}
+</style>
 
 
 <!-- begin _includes/seo.html --><title>Visit | All Hands Active</title>
@@ -217,34 +225,23 @@
 <!-- for sign status -->
 <script>
   var elt_signStatus = document.getElementById('signStatus');
-  elt_signStatus.innerText = "Getting sign status...";
+  elt_signStatus.innerHTML = "Getting sign status...";
 
-  // get the status from the API
   fetch("http://isawthesign.allhandsactive.org/state", )
     .then(response => response.json())
     .then(data => {
       console.log("got response from isawthesign.allhandsactive.org/state")
       if (data)
       {
-        elt_signStatus.innerHTML = "Sign is ON";
+        elt_signStatus.innerHTML = "Sign is ON" + '<br><img src="./Status _ All Hands Active_files/opensign.png">';
       }
       else
       {
-        elt_signStatus.innerHTML = "Sign is OFF";
+        elt_signStatus.innerHTML = "Sign is OFF" + '<br><img src="./Status _ All Hands Active_files/closedsign.png">';
       }
     })
     .catch(error => console.error(error))
-
-  // change the text/image
   
-  
-  
-  
-
-
-
-  // TO CHANGE IMAGE
-  // document.querySelector('div.header').innerHTML = "<img src='smiley.gif' alt='Smiley face' height='42' width='42'>";
 </script>
 
 </html>
